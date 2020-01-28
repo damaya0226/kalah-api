@@ -1,4 +1,4 @@
-package com.damaya.backbasekalahapi;
+package com.damaya.kalah;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

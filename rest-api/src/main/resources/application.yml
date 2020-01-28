@@ -1,0 +1,12 @@
+
+#LOGGING PROPERTIES
+logging:
+  level:
+    com.damaya.kalah: ${logs_configuration_level:DEBUG}
+
+#Configuration Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "loggers,health,env,info,logfile,metrics"
