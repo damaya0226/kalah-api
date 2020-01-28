@@ -18,7 +18,8 @@
 	<modules>
 		<module>core</module>
         <module>rest-api</module>
-    </modules>
+		<module>datastore</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,6 +1,6 @@
 package com.damaya.kalah.controllers;
 
-import com.damaya.kalah.core.entities.Game;
+import com.damaya.kalah.core.entities.domain.Game;
 import com.damaya.kalah.core.interfaces.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

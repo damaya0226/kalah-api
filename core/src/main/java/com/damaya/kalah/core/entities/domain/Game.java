@@ -1,4 +1,4 @@
-package com.damaya.kalah.core.entities;
+package com.damaya.kalah.core.entities.domain;
 
 import lombok.Builder;
 import lombok.Data;
@@ -11,5 +11,6 @@ public class Game {
 
     private Long id;
     private Date startedAt;
+    private Board board;
 
 }
