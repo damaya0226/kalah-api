@@ -24,7 +24,7 @@ public class GameController {
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public GameResponse createGame(){
-        return GameResponseMapper.map(service.create()/*.withBoard(null)*/);
+        return GameResponseMapper.map(service.create().withBoard(null));
     }
 
     @PutMapping("/{gameId}/pits/{pitId}")
