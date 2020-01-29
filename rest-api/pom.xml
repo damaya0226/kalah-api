@@ -46,16 +46,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.damaya.halah</groupId>
+            <groupId>com.damaya.kalah</groupId>
             <artifactId>datastore</artifactId>
             <version>1.0.0</version>
         </dependency>
 
         <dependency>
-            <groupId>com.damaya.halah</groupId>
+            <groupId>com.damaya.kalah</groupId>
             <artifactId>core</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
