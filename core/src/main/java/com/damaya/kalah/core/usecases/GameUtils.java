@@ -49,7 +49,7 @@ public class GameUtils {
      */
     public static int[] dealGame(int stonesPerPit){
         if(stonesPerPit > 0){
-            int pits[] = new int[14];
+            int[] pits = new int[14];
             for(int i = 0 ; i < pits.length ; i++){
                 pits[i] = stonesPerPit;
             }
