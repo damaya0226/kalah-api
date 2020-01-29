@@ -1,8 +1,1 @@
 language: java
-
-addons:
-  sonarcloud:
-    organization: "damaya0226"
-
-script:
-  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=kalah-api
