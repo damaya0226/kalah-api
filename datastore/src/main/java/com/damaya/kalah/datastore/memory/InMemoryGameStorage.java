@@ -25,6 +25,6 @@ public class InMemoryGameStorage implements GameStorage {
 
     @Override
     public Optional<Game> findById(String gameId) {
-        return Optional.of(gameMap.get(gameId));
+        return Optional.ofNullable(gameMap.get(gameId));
     }
 }
