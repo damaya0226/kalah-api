@@ -1,1 +1,8 @@
 language: java
+
+addons:
+  sonarcloud:
+    organization: "damaya0226"
+
+script:
+  - sonar-scanner
