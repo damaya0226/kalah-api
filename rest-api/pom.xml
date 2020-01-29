@@ -39,6 +39,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.damaya.halah</groupId>
             <artifactId>datastore</artifactId>
             <version>1.0.0</version>

@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class InMemoryGameStorage implements GameStorage {
 
-    private Map<Long, Game> gameMap;
+    private Map<String, Game> gameMap;
 
     public InMemoryGameStorage() {
         this.gameMap = new HashMap<>();
@@ -18,10 +19,12 @@ public class InMemoryGameStorage implements GameStorage {
 
     @Override
     public Game save(Game game) {
-        synchronized (gameMap){
-            game.setId((long) gameMap.size());
-            gameMap.put(game.getId(), game);
-        }
+        gameMap.put(game.getId(), game);
         return game;
+    }
+
+    @Override
+    public Optional<Game> findById(String gameId) {
+        return Optional.of(gameMap.get(gameId));
     }
 }
