@@ -12,7 +12,7 @@
 
 **[DevOps](#DevOps)**
 
-**[Future Work](#Future Work)**
+**[Future Work](#FutureWork)**
     
 
 ## The API
@@ -91,7 +91,7 @@ This endpoint make a move on the kalah board.
 ## DevOps
 DevOps is managed using travis-ci. Travis executes test, sonar analysis and publish the results to sonar cloud.
 
-## Future Work
+## FutureWork
  * Add Swagger.
  * Continuous Delivery.
  * Shared in memory DB to be able to scale the solution
