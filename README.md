@@ -110,6 +110,7 @@ DevOps is managed using travis-ci. Travis executes test, sonar analysis, publish
 
 ### With Docker
 
+Here you will find the current docker image: https://hub.docker.com/r/damaya0226/kalah-api
 ```
 docker pull damaya0226/kalah-api
 docker run -p 8080:8080 damaya0226/kalah-api
