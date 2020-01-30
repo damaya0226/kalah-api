@@ -41,7 +41,7 @@ public class GameServiceImpl implements GameService {
     public Game makeMove(String gameId, int pitId) throws GameNotFoundException, GameAlreadyFinishedException
             , InvalidMoveException {
         Game game = storage.findById(gameId).orElseThrow(() -> new GameNotFoundException("Game not found"));
-        GameUtils.validateMove(game, pitId);
+        validateMove(game, pitId);
         return processMove(game, pitId);
     }
 

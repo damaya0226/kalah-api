@@ -34,9 +34,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler({GameAlreadyFinishedException.class})
-    public ResponseEntity handleInvalidMoveException(GameAlreadyFinishedException e, WebRequest request) {
+    public void handleInvalidMoveException(GameAlreadyFinishedException e, HttpServletResponse response) throws IOException {
         LOGGER.debug(e.getMessage());
-        return handleExceptionInternal(e, e.getMessage(),
-                new HttpHeaders(), HttpStatus.CONFLICT, request);
+        response.sendError(HttpStatus.CONFLICT.value());
     }
 }

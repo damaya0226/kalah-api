@@ -1,7 +1,9 @@
 package com.damaya.kalah.controllers;
 
 import com.damaya.kalah.KalahApiApplication;
+import com.damaya.kalah.core.entities.domain.Game;
 import com.damaya.kalah.core.entities.enums.GameTurn;
+import com.damaya.kalah.core.interfaces.GameStorage;
 import com.damaya.kalah.dtos.GameResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +29,8 @@ public class GameControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
+    @Autowired
+    private GameStorage storage;
 
     @LocalServerPort
     private int port;
@@ -62,7 +66,7 @@ public class GameControllerTest {
 
     @Test
     public void testMakeMoveFailedWhenInvalidMoveAdversaryPit() {
-        GameResponse game = createGame();
+        GameResponse game = createGameWithApi();
         int pitId = 13;
 
         HttpEntity<String> entity = createHttpEntity(MediaType.APPLICATION_JSON);
@@ -78,7 +82,7 @@ public class GameControllerTest {
 
     @Test
     public void testMakeMoveFailedWhenInvalidMoveStonesFromHomePit() {
-        GameResponse game = createGame();
+        GameResponse game = createGameWithApi();
         int pitId = 7;
 
         HttpEntity<String> entity = createHttpEntity(MediaType.APPLICATION_JSON);
@@ -92,11 +96,34 @@ public class GameControllerTest {
         assertThat(response.getHeaders().getContentType()).isEqualTo(MediaType.APPLICATION_JSON);
     }
 
-    private GameResponse createGame(){
+    @Test
+    public void testMakeMoveFailedWhenGameIsAlreadyFinished() {
+        Game game = createFinishedGame();
+        int pitId = 2;
+        HttpEntity<String> entity = createHttpEntity(MediaType.APPLICATION_JSON);
+        ParameterizedTypeReference<Map<String, Object>> responseType = new ParameterizedTypeReference<Map<String, Object>>() {};
+
+        ResponseEntity<Map<String, Object>> response = restTemplate.exchange(URL + "/" + game.getId() + "/pits/" + pitId,
+                HttpMethod.PUT, entity, responseType);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+        assertThat(response.getBody()).isNotNull().containsKeys("message").containsValue("Game is already finished");
+        assertThat(response.getHeaders().getContentType()).isEqualTo(MediaType.APPLICATION_JSON);
+    }
+
+    private GameResponse createGameWithApi(){
         HttpEntity<String> entity = createHttpEntity(MediaType.APPLICATION_JSON);
         return restTemplate.exchange(URL, HttpMethod.POST, entity, GameResponse.class).getBody();
     }
 
+    private Game createFinishedGame(){
+        return storage.save(Game.builder()
+                .id(UUID.randomUUID().toString())
+                .startedAt(new Date())
+                .finishedAt(new Date())
+                .turn(GameTurn.PLAYER_ONE)
+                .winner(GameTurn.PLAYER_ONE).build());
+    }
 
     private HttpEntity<String> createHttpEntity(MediaType mediaType) {
         HttpHeaders headers = new HttpHeaders();
