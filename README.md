@@ -7,8 +7,11 @@
 **[The API](#heading--1)**
   * [Create game](#heading--1-1)
   * [Make a move](#heading--1-2)
-  
+
+**[Components](#Components)**
+
 **[DevOps](#DevOps)**
+    
 
 ## The API
 
@@ -78,3 +81,10 @@ This endpoint make a move on the kalah board.
 | 401 (Conflict)            | Game is already finished      |
 | 404 (Not found)           | Game not found      |
 
+## Components
+ * Core: Business logic.
+ * Datastore: In memory data storage implementation.
+ * Rest API: Exposes Rest API Endpoints.
+ 
+## DevOps
+DevOps is managed using travis-ci. Travis executes test, sonar analysis and publish the results to sonar cloud.
