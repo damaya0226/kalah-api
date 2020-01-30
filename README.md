@@ -11,6 +11,8 @@
 **[Components](#Components)**
 
 **[DevOps](#DevOps)**
+
+**[Future Work](#Future Work)**
     
 
 ## The API
@@ -36,7 +38,7 @@ This endpoint creates a new Kalah game.
 #### Response Codes
 | HTTP Code             | Explanation             |
 | -------------         |:-----------------------------------------------:|
-| 201 (Created)              | The String was accepted |
+| 201 (Created)         | The game was created |
 
 
 <div id="heading--1-2"/>
@@ -88,3 +90,8 @@ This endpoint make a move on the kalah board.
  
 ## DevOps
 DevOps is managed using travis-ci. Travis executes test, sonar analysis and publish the results to sonar cloud.
+
+## Future Work
+ * Add Swagger.
+ * Continuous Delivery.
+ * Shared in memory DB to be able to scale the solution
