@@ -111,6 +111,41 @@ public class GameControllerTest {
         assertThat(response.getHeaders().getContentType()).isEqualTo(MediaType.APPLICATION_JSON);
     }
 
+    @Test
+    public void testMakeMoveSucceed() {
+        GameResponse gameResponse = createGameWithApi();
+        int pitId = 6;
+        HttpEntity<String> entity = createHttpEntity(MediaType.APPLICATION_JSON);
+
+        ResponseEntity<GameResponse> response = restTemplate.exchange(URL + "/" + gameResponse.getId() + "/pits/" + pitId,
+                HttpMethod.PUT, entity, GameResponse.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getHeaders().getContentType()).isEqualTo(MediaType.APPLICATION_JSON);
+        assertThat(response.getBody()).isNotNull().satisfies(game -> {
+            assertThat(game.getId()).isNotEmpty().isEqualTo(gameResponse.getId());
+            assertThat(game.getUrl()).isEqualTo("http://localhost:" + port + URL + "/" + game.getId());
+            assertThat(game.getStatus()).isNotNull();
+
+            Map<String, String> pits = game.getStatus();
+
+            assertThat(pits.get("1")).isEqualTo("6");
+            assertThat(pits.get("2")).isEqualTo("6");
+            assertThat(pits.get("3")).isEqualTo("6");
+            assertThat(pits.get("4")).isEqualTo("6");
+            assertThat(pits.get("5")).isEqualTo("6");
+            assertThat(pits.get("6")).isEqualTo("0");
+            assertThat(pits.get("7")).isEqualTo("1");
+            assertThat(pits.get("8")).isEqualTo("7");
+            assertThat(pits.get("9")).isEqualTo("7");
+            assertThat(pits.get("10")).isEqualTo("7");
+            assertThat(pits.get("11")).isEqualTo("7");
+            assertThat(pits.get("12")).isEqualTo("7");
+            assertThat(pits.get("13")).isEqualTo("6");
+            assertThat(pits.get("14")).isEqualTo("0");
+        });
+    }
+
     private GameResponse createGameWithApi(){
         HttpEntity<String> entity = createHttpEntity(MediaType.APPLICATION_JSON);
         return restTemplate.exchange(URL, HttpMethod.POST, entity, GameResponse.class).getBody();
