@@ -3,9 +3,7 @@
 [![Build Status](https://travis-ci.com/damaya0226/kalah-api.svg?branch=master)](https://travis-ci.com/damaya0226/kalah-api)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kalah-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=kalah-api)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kalah-api&metric=coverage)](https://sonarcloud.io/dashboard?id=kalah-api) 
-
-**[Run with Maven](#Run)**
-
+  
 **[The API](#heading--1)**
   * [Create game](#heading--1-1)
   * [Make a move](#heading--1-2)
@@ -14,13 +12,12 @@
 
 **[DevOps](#DevOps)**
 
+**[How to run it](#heading-run-it)**
+  * [With Maven](#heading-run-it-1)
+  * [With Docker](#heading-run-it-2)
+  
 **[Future Work](#FutureWork)**
     
-## Run
-```
-./mvnw -pl rest-api -am spring-boot:run
-```
-
 ## The API
 
 <div id="heading--1-1"/>
@@ -95,9 +92,31 @@ This endpoint make a move on the kalah board.
  * Rest API: Exposes Rest API Endpoints.
  
 ## DevOps
-DevOps is managed using travis-ci. Travis executes test, sonar analysis and publish the results to sonar cloud.
+DevOps is managed using travis-ci. Travis executes test, sonar analysis, publish the results to sonar cloud and then it builds a docker image and push it to the public docker hub repo.
+
+<div id="heading-run-it"/>
+
+## How to run it
+
+<div id="heading-run-it-1"/>
+
+### With Maven
+
+```
+./mvnw -pl rest-api -am spring-boot:run
+```
+
+<div id="heading-run-it-2"/>
+
+### With Docker
+
+```
+docker pull damaya0226/kalah-api
+docker run -p 8080:8080 damaya0226/kalah-api
+```
+
 
 ## FutureWork
  * Add Swagger.
- * Continuous Delivery.
+ * Continuous Delivery. (Right now I am delivering the solution as a docker image)
  * Shared in memory DB to be able to scale the solution
