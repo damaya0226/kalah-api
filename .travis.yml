@@ -7,3 +7,6 @@ addons:
 
 script:
   - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=kalah-api
+  - docker build -t damaya0226/kalah-api .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push damaya0226/kalah-api

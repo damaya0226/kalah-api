@@ -4,6 +4,8 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kalah-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=kalah-api)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kalah-api&metric=coverage)](https://sonarcloud.io/dashboard?id=kalah-api) 
 
+**[Run with Maven](#Run)**
+
 **[The API](#heading--1)**
   * [Create game](#heading--1-1)
   * [Make a move](#heading--1-2)
@@ -14,6 +16,10 @@
 
 **[Future Work](#FutureWork)**
     
+## Run
+```
+./mvnw -pl rest-api -am spring-boot:run
+```
 
 ## The API
 
