@@ -24,8 +24,9 @@ public class GameResponseMapper {
     }
 
     private static Map<String, String> mapPits(Board board) {
-        Map<String, String> status = new HashMap<>();
+        Map<String, String> status = null;
         if(Objects.nonNull(board) && Objects.nonNull(board.getPits())){
+            status = new HashMap<>();
             for(int i = 1; i <= board.getPits().length; i++){
                 status.put(String.valueOf(i), String.valueOf(board.getPits()[i-1]));
             }
